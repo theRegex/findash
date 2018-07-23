@@ -4,7 +4,7 @@ import { hot } from "react-hot-loader";
 
 class App extends Component {
   state = {
-    clock: new Date(Date.now()).toLocaleString(),
+    clock: new Date(Date.now()),
     active: false
   }
 
@@ -15,7 +15,7 @@ class App extends Component {
     } else {
       this.setState({active: true});
       this.interval = setInterval(() => {
-        this.setState({clock: new Date(Date.now()).toLocaleString()});
+        this.setState({clock: new Date(Date.now())});
       }, 1000);
     }
   }
@@ -26,22 +26,28 @@ class App extends Component {
         display: flex;
         flex-direction: column;
         align-items: center;
+        font-family: Roboto, "Helvetica Neue";
+        font-weight: 300; 
       `}>
-        <h1 className={css` 
-            color: #1144FF;
+        <h1 className={css`
+            color: #11CCCC;
+            font-weight: 300; 
+            background-color: #111111;
+            padding: 6px 18px;
+            border-radius: 3px;
           `}>
           REACT APP STARTER</h1>
-        <div>{this.state.clock}</div>
+        <div>{this.state.clock.toLocaleTimeString()}</div>
         <button onClick={this.handleClick}
           className={css`
             margin-top: 30px;
             height: 32px;
             width: 64px;
-            background-color: ${(this.state.active ? "#FF2222" : "#22DD22")};
+            background-color: ${(this.state.active ? "#11CCCC" : "#111111")};
             border-radius: 3px;
             outline: none;
             font-size: 16px;
-            color: white;
+            color: ${(this.state.active ? "#111111" : "#11CCCC")};
 
             &:hover {
               cursor: pointer;
