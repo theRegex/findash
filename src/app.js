@@ -26,12 +26,12 @@ class App extends Component {
         display: flex;
         flex-direction: column;
         align-items: center;
-        font-family: Roboto, "Helvetica Neue";
-        font-weight: 300; 
+        font-family: Roboto, "Helvetica Neue", sans-serif;
+        font-weight: 300;
       `}>
         <h1 className={css`
             color: #11CCCC;
-            font-weight: 300; 
+            font-weight: 300;
             background-color: #111111;
             padding: 6px 18px;
             border-radius: 3px;
