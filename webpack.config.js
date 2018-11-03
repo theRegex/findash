@@ -1,6 +1,7 @@
 const BundleAnalyzerPlugin = require("webpack-bundle-analyzer").BundleAnalyzerPlugin;
 const CleanWebpackPlugin = require("clean-webpack-plugin");
 const HTMLWebpackPlugin = require("html-webpack-plugin");
+const WebpackCdnPlugin = require("webpack-cdn-plugin");
 const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
 const path = require("path");
 const webpack = require("webpack");
@@ -23,7 +24,9 @@ module.exports = {
 
   devtool: isProduction ? "hidden-source-map" : "cheap-eval-source-map",
 
-  entry: ["babel-polyfill", "./src/index.js"],
+  entry: {
+    app: "./src/index.js"
+  },
 
   output: {
     path: path.resolve(__dirname, "dist"),
@@ -44,11 +47,17 @@ module.exports = {
               babelrc: false,
               cacheDirectory: true,
               presets: [
-                "env",
-                "react-app"
+                [
+                  "@babel/preset-env",
+                  {
+                    "targets": "> 0.25%, not dead"
+                  }
+                ],
+                "@babel/preset-react"
               ],
               plugins: [
                 "emotion",
+                "@babel/plugin-proposal-class-properties",
                 "react-hot-loader/babel"
               ]
             }
@@ -86,9 +95,20 @@ module.exports = {
     let pluginsList = [
       new HTMLWebpackPlugin({
         template: path.resolve(__dirname, "src/index.html"),
+        cdnModule: "deps",
         filename: "index.html",
         title: "React Starter",
         inject: "body"
+      }),
+      new WebpackCdnPlugin({
+        modules: {
+          deps: [
+            { name: "react", var: "React", path: `umd/react.${isProduction ? "production.min" : "development"}.js` },
+            { name: "react-dom", var: "ReactDOM", path: `umd/react-dom.${isProduction ? "production.min" : "development"}.js` },
+            { name: "react-router", var: "ReactRouter", path: "umd/react-router.min.js" },
+            { name: "react-router-dom", var: "ReactRouterDOM", path: "umd/react-router-dom.min.js" },
+          ]
+        }
       })
     ];
 
@@ -116,7 +136,7 @@ module.exports = {
   })(),
 
   optimization: {
-    minimize: false,
+    minimize: isProduction,
     minimizer: [
       new UglifyJsPlugin()
     ]
