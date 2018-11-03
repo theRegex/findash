@@ -1,2 +1,2 @@
 # react-emotion-starter
-Project starter with React 16.4, Emotion 8, &amp; Webpack 4
+Project starter with React 16.6, Emotion 9, &amp; Webpack 4
