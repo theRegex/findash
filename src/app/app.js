@@ -1,7 +1,7 @@
 import Clock from "./clock";
 import ClockBtn from "./clockBtn";
 import React, { Component } from "react";
-import { css } from "emotion";
+import { css } from "@emotion/core";
 import { hot } from "react-hot-loader";
 
 class App extends Component {
@@ -15,14 +15,14 @@ class App extends Component {
 
   render() {
     return(
-      <div className={css`
+      <div css={css`
         display: flex;
         flex-direction: column;
         align-items: center;
         font-family: Roboto, "Helvetica Neue", sans-serif;
         font-weight: 300;
       `}>
-        <h1 className={css`
+        <h1 css={css`
             color: #11CCCC;
             font-weight: 300;
             background-color: #111111;
