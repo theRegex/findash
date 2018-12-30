@@ -1,10 +1,10 @@
 import PropTypes from "prop-types";
 import React from "react";
-import { css } from "emotion";
+import { css } from "@emotion/core";
 
 const ClockBtn = ({active, onClick}) => (
   <button onClick={onClick}
-    className={css`
+    css={css`
       margin-top: 30px;
       height: 32px;
       width: 64px;

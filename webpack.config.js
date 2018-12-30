@@ -2,7 +2,7 @@ const BundleAnalyzerPlugin = require("webpack-bundle-analyzer").BundleAnalyzerPl
 const CleanWebpackPlugin = require("clean-webpack-plugin");
 const HTMLWebpackPlugin = require("html-webpack-plugin");
 const WebpackCdnPlugin = require("webpack-cdn-plugin");
-const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
+const TerserPlugin = require("terser-webpack-plugin");
 const path = require("path");
 const webpack = require("webpack");
 
@@ -53,7 +53,14 @@ module.exports = {
                     "targets": "> 0.25%, not dead"
                   }
                 ],
-                "@babel/preset-react"
+                "@babel/preset-react",
+                [
+                  "@emotion/babel-preset-css-prop",
+                  {
+                    "autoLabel": true,
+                    "labelFormat": "[local]"
+                  }
+                ]
               ],
               plugins: [
                 "emotion",
@@ -138,7 +145,7 @@ module.exports = {
   optimization: {
     minimize: isProduction,
     minimizer: [
-      new UglifyJsPlugin()
+      new TerserPlugin()
     ]
   }
 };

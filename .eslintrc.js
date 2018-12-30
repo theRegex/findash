@@ -13,7 +13,8 @@ module.exports = {
   },
   "plugins": [
       "standard",
-      "react"
+      "react",
+      "emotion"
   ],
   "rules": {
     "keyword-spacing": ["error", {"before": true, "after": false, "overrides": {"else": {"after": true}, "from": {"after": true}, "import": {"after": true}, "case": {"after": true}}}],
@@ -24,12 +25,15 @@ module.exports = {
     "semi": ["error", "always"],
     "space-before-function-paren": ["error", "never"],
     "space-unary-ops": [2, {"words": true, "nonwords": false, "overrides": {"typeof": false}}],
-    "standard/no-callback-literal": "off"
+    "standard/no-callback-literal": "off",
+    "emotion/no-vanilla": "error",
+    "emotion/import-from-emotion": "error",
+    "emotion/styled-import": "error"
   },
   "settings": {
     "react": {
         "pragma": "React",
-        "version": "16.6.0"
+        "version": "16.7.0"
     }
 }
 };
