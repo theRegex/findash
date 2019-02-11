@@ -7,9 +7,7 @@
   ],
   "syntax": "scss",
   "rules": {
-    "color-hex-case": "upper",
     "color-hex-length": "long",
-    "selector-list-comma-newline-after": "never-multi-line",
     "selector-pseudo-element-colon-notation": "single",
     "selector-max-universal": 0,
     "no-descending-specificity": null,

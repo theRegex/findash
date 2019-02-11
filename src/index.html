@@ -1,21 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title><%=htmlWebpackPlugin.options.title%></title>
-  <!--
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title><%=htmlWebpackPlugin.options.title%></title>
+    <!--
       manifest.json provides metadata used when your web app is added to the
       homescreen on Android. See https://developers.google.com/web/fundamentals/engage-and-retain/web-app-manifest/
     -->
-    <link rel="manifest" href="/manifest.json">
-    <link rel="shortcut icon" href="/favicon.ico">
-</head>
-<body>
-  <noscript>
-    You need to enable Javascript to view this website.
-  </noscript>
-  <div id="root"></div>
-</body>
+    <link rel="manifest" href="/manifest.json" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" />
+  </head>
+  <style>
+    body {
+      padding: 0;
+      margin: 0;
+      font-family: Roboto;
+    }
+    #root {
+      height: 100vh;
+      width: 100vw;
+    }
+  </style>
+
+  <body>
+    <noscript> You need to enable Javascript to view this website. </noscript>
+    <div id="root"></div>
+  </body>
 </html>
