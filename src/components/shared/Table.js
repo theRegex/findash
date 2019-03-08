@@ -7,24 +7,24 @@ class BuilderTable extends React.Component {
     let tempArray = new Array(this.props.headers.length);
     tempArray.fill(0);
     return tempArray.map((val, index) => {
-      return<col id={`t_col_${index}`} key={index} />;
+      return <col id={`t_col_${index}`} key={index} />;
     });
   }
   cellClicked(data, event) {
-    if(this.props.onColumnClick) {
+    if (this.props.onColumnClick) {
       this.props.onColumnClick(data, event);
     }
   }
   cellModified(data, event) {
-    if(this.props.onCellChanged) {
+    if (this.props.onCellChanged) {
       this.props.onCellChanged(data, event);
     }
   }
   createRows() {
-    if(!this.props.dataset.length) return"";
+    if (!this.props.dataset.length) return "";
     let elementSet = [];
     let i = 0;
-    for(i; i < this.props.dataset.length; i++) {
+    for (i; i < this.props.dataset.length; i++) {
       let object = this.props.dataset[i];
       let objectKeys = this.dropIgnoredProperties(Object.keys(object));
       let newElements = objectKeys.map((propName, index) => {
@@ -42,14 +42,14 @@ class BuilderTable extends React.Component {
           this.props.construct &&
           this.props.construct.find(el => el.cellName === propName);
 
-        if(customElementObject) {
+        if (customElementObject) {
           let customElement = null;
           customElement = this.createElementNode(
             customElementObject,
             elementValue,
             eventData
           );
-          return(
+          return (
             <td
               key={index}
               data-column={this.props.headers[index]}
@@ -59,7 +59,7 @@ class BuilderTable extends React.Component {
             </td>
           );
         }
-        return(
+        return (
           <td
             key={index}
             data-column={this.props.headers[index]}
@@ -87,14 +87,14 @@ class BuilderTable extends React.Component {
     return elementSet;
   }
   dropIgnoredProperties(keyList) {
-    if(!this.props.ignore) return keyList;
+    if (!this.props.ignore) return keyList;
 
     return keyList.filter(keyItem => this.props.ignore.indexOf(keyItem) < 0);
   }
   createElementNode(settings, value, eventData) {
-    switch(settings.nodeType) {
+    switch (settings.nodeType) {
       case "input":
-        return(
+        return (
           <input
             type={settings.inputType}
             defaultValue={value}
@@ -104,16 +104,16 @@ class BuilderTable extends React.Component {
           />
         );
       case "link":
-        return<a href={settings.anchorUrl}>{settings.anchorText || value}</a>;
+        return <a href={settings.anchorUrl}>{settings.anchorText || value}</a>;
       case "custom":
         return settings.element;
       default:
-        return<div>{value}</div>;
+        return <div>{value}</div>;
     }
   }
   createHeaders() {
     return this.props.headers.map((headerTitle, index) => {
-      return(
+      return (
         <th
           ref={`col${index}`}
           key={index}
@@ -127,8 +127,7 @@ class BuilderTable extends React.Component {
     });
   }
   render() {
-    console.log("inside table: ", this.props.dataset);
-    return(
+    return (
       <table
         css={this.props.tableCss}
         ref={this.props.name}

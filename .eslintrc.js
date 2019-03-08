@@ -10,19 +10,6 @@ module.exports = {
   },
   plugins: ["standard", "react", "emotion"],
   rules: {
-    "keyword-spacing": [
-      "error",
-      {
-        before: true,
-        after: false,
-        overrides: {
-          else: { after: true },
-          from: { after: true },
-          import: { after: true },
-          case: { after: true }
-        }
-      }
-    ],
     "no-template-curly-in-string": "off",
     "object-curly-spacing": "off",
     quotes: ["error", "double"],

@@ -14,8 +14,8 @@ module.exports = {
   mode: isProduction ? "production" : "development",
 
   devServer: (() => {
-    if(isProduction) return{};
-    return{
+    if (isProduction) return {};
+    return {
       contentBase: "./dist",
       historyApiFallback: true,
       hot: true,
@@ -30,8 +30,8 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, "dist"),
     filename: (() => {
-      if(isProduction) return"[name].[chunkhash].js";
-      else return"[name].bundle.js";
+      if (isProduction) return "[name].[chunkhash].js";
+      else return "[name].bundle.js";
     })()
   },
 
@@ -144,11 +144,11 @@ module.exports = {
       })
     ];
 
-    if(!isProduction) {
+    if (!isProduction) {
       pluginsList.push(new webpack.HotModuleReplacementPlugin());
     }
 
-    if(isProduction) {
+    if (isProduction) {
       pluginsList.push(
         new CleanWebpackPlugin(["dist"], {
           exclude: ["favicon.ico", "manifest.json"]
@@ -157,7 +157,7 @@ module.exports = {
       );
     }
 
-    if(isPerformance) {
+    if (isPerformance) {
       pluginsList.push(new BundleAnalyzerPlugin());
     }
     return pluginsList;

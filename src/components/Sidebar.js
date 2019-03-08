@@ -4,7 +4,7 @@ import { css } from "@emotion/core";
 import { Box } from "@rebass/emotion";
 
 const Sidebar = () => {
-  const[open, setOpen] = React.useState(false);
+  const [open, setOpen] = React.useState(false);
   const topIcon = !open ? "chevronRight" : "chevronLeft";
 
   const renderTopIcon = icon => <Icon name={icon} />;
@@ -16,15 +16,9 @@ const Sidebar = () => {
     flex-direction: column;
     align-items: center;
     border-right: 2px solid black;
-    transition: all 0.3s linear;
+    transition: all 0.2s linear;
     font-size: 11px;
   `;
-
-  // const menuIcon = css`
-  //   color: black;
-  //   margin: 2rem 0;
-  //   transition: all 0.3s linear;
-  // `;
 
   const itemList = css`
     width: 100%;
@@ -52,10 +46,10 @@ const Sidebar = () => {
   const itemText = css`
     width: ${show};
     opacity: ${opacity};
-    transition: all 0.5s linear;
+    transition: all 0.1s linear;
   `;
 
-  return(
+  return (
     <div css={sidebar} onClick={() => setOpen(open => !open)}>
       <Box py={4} px={3}>
         {renderTopIcon(topIcon)}
@@ -78,7 +72,7 @@ const Sidebar = () => {
   );
 };
 
-export default Sidebar;
+export { Sidebar };
 
 /* icons list
 
